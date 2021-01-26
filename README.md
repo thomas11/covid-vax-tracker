@@ -11,8 +11,7 @@ Once a weekday (or when I choose to run it), it retrieves data from the [CDC COV
 
 The bot is written in [F#](https://fsharp.org/) and runs on [Azure Functions](https://azure.microsoft.com/en-us/services/functions/) using the timer trigger.
 
-Many thanks to Scott Wlaschin for the invaluable https://fsharpforfunandprofit.com.
-![F# |> I *heart*](./I_Heart_Fsharp_Long_Black_300x75.png)
+As a newbie to F#, many thanks to Scott Wlaschin for the https://fsharpforfunandprofit.com. `F# |> I ♥`
 
 Disclaimer: I work at Microsoft, but this a personal project with no relation to my job, which is unrelated to F# or Functions.
 
