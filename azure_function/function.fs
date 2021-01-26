@@ -64,4 +64,4 @@ module cdc_vax_function =
         run log
 
     [<FunctionName("TweetCdcDataHttp")>]
-    let runHttp ([<HttpTrigger(AuthorizationLevel.Anonymous, "post")>] req: HttpRequest, log: ILogger) = run log
+    let runHttp ([<HttpTrigger(AuthorizationLevel.Function, "post")>] req: HttpRequest, log: ILogger) = run log
