@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\cdc_vax_function\cdc_vax_function.fsproj" />
+    <ProjectReference Include="..\azure_function\cdc_vax_function.fsproj" />
   </ItemGroup>
 
 </Project>
