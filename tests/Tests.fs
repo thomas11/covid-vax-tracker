@@ -63,4 +63,4 @@ let ``rounds floats to nearest int`` () =
 [<Fact>]
 let ``complete Tweet should look as expected`` () =
     tweetContent 13472 "WA"
-    |> should equal "▓▓▓░░░░░░░░░░░░░░░░░░░░░░  In WA, 13472 per 100k = 13.5% received both doses of either the Pfizer or the Moderna vaccine."
+    |> should equal "In WA, 13.5% of the population (13472 per 100k) received both doses of either the Pfizer or the Moderna vaccine.\n▓▓▓░░░░░░░░░░░░░░░░░"

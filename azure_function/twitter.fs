@@ -20,10 +20,10 @@ let progressBar numChars (percentCompleted: float) =
 let tweetContent numPer100K location =
     let percentage = (float (numPer100K) / 1000.0)
     sprintf
-        "In %s, %i per 100k = %.1f%% received both doses of either the Pfizer or the Moderna vaccine.\n%s"
+        "In %s, %.1f%% of the population (%i per 100k) received both doses of either the Pfizer or the Moderna vaccine.\n%s"
         location
-        numPer100K
         percentage
+        numPer100K
         (progressBar 20 percentage)
 
 let tweet (client: TwitterClient) (content: string) =
