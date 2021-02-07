@@ -1,15 +1,13 @@
 module CdcVaxTracker.Twitter
 
-open System
 open Tweetinvi
 
-// Math.Round rounds .5 down, not up!
-let roundToInt (f: float) = Convert.ToInt32(Math.Round(f))
-
 let progressBar numChars (percentCompleted: float) =
-    let scaledown = 100.0 / (float numChars)
+    let scale = 100.0 / (float numChars)
 
-    let filledChars = roundToInt (percentCompleted / scaledown)
+    // We want straight int conversion that chops off everything after the decimal point.
+    // The progrss bar should only show a segment as completed once it's fully completed.
+    let filledChars = int(percentCompleted / scale)
     let emptyChars = numChars - filledChars
 
     let completed = String.replicate filledChars "▓"
