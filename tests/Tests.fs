@@ -12,7 +12,7 @@ let filled = '▓'
 let ``all progress bars have the requested length`` () =
     seq {
         for l in 3 .. 200 do
-            for p in 0 .. 100 -> (progressBar l (float p), l, p)
+            for p in 0 .. 100 -> (progressBar l (decimal p), l, p)
     }
     |> Seq.iter (fun (bar, l, p) -> (String.length bar, p) |> should equal (l, p))
 
@@ -34,32 +34,37 @@ let shouldBeFilledUntil n bar =
 
 [<Fact>]
 let ``progress bar with 0%`` () =
-    progressBar 50 0.0
+    progressBar 50 0.0m
     |> shouldBeFilledUntil 0
 
 [<Fact>]
 let ``progress bar is empty if not enough completed`` () =
-    progressBar 50 1.99
+    progressBar 50 1.99m
     |> shouldBeFilledUntil 0
 
 [<Fact>]
 let ``progress bar of length 20 empty`` () =
-    progressBar 20 4.8
+    progressBar 20 4.8m
     |> shouldBeFilledUntil 0
 
 [<Fact>]
 let ``progress bar of length 20 1 completed`` () =
-    progressBar 20 5.0
+    progressBar 20 5.0m
     |> shouldBeFilledUntil 1
 
 [<Fact>]
+let ``progress bar of length 20 2 completed`` () =
+    progressBar 20 10m
+    |> shouldBeFilledUntil 2
+
+[<Fact>]
 let ``progress bar shows first chunk if just enough completed`` () =
-    progressBar 50 2.0
+    progressBar 50 2.0m
     |> shouldBeFilledUntil 1
 
 [<Fact>]
 let ``progress bar shows half completed`` () =
-    progressBar 50 50.0
+    progressBar 50 50.0m
     |> shouldBeFilledUntil 25
 
 [<Fact>]
