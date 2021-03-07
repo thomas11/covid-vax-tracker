@@ -55,8 +55,8 @@ module cdc_vax_function =
         |> Async.RunSynchronously
 
     [<FunctionName("TweetCdcDataTimer")>]
-    // 8p EST = 1a UTC Mon-Fri
-    let runTimer ([<TimerTrigger("0 0 1 * * 1-5")>] myTimer: TimerInfo, log: ILogger) =
+    // 8p EST = 1a UTC
+    let runTimer ([<TimerTrigger("0 0 1 * * *")>] myTimer: TimerInfo, log: ILogger) =
         let msg =
             sprintf "Time trigger function executed at: %A" DateTime.Now
 
