@@ -8,7 +8,7 @@ let progressBar numChars (percentCompleted: decimal) =
 
     // We want straight int conversion that chops off everything after the decimal point.
     // The progrss bar should only show a segment as completed once it's fully completed.
-    let filledChars = int(percentCompleted / scale)
+    let filledChars = int (percentCompleted / scale)
     let emptyChars = numChars - filledChars
 
     let completed = String.replicate filledChars "▓"
@@ -16,15 +16,15 @@ let progressBar numChars (percentCompleted: decimal) =
 
     completed + remaining
 
-let tweetContent numPer100K location =
-    let percentage = (float (numPer100K) / 1000.0)
-    let roundedPercentage = Math.Round((decimal)percentage, 1)
+let tweetContent (percentage: decimal) location =
+    let roundedPercentage = Math.Round(percentage, 1)
+
     sprintf
-        "In %s, %.1f%% of the population (%i per 100k) received both doses of either the Pfizer or the Moderna vaccine.\n%s"
+        "In %s, %.1f%% of the population are fully vaccinated (two doses of Pfizer or Moderna or one dose of J&J).\n%s"
         location
         roundedPercentage
-        numPer100K
         (progressBar 20 roundedPercentage)
+
 
 let tweet (client: TwitterClient) (content: string) =
     client.Tweets.PublishTweetAsync(content)

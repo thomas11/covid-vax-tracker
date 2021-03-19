@@ -35,16 +35,10 @@ let getCdcData () =
         return parse rawData
     }
 
-let getTwoDosesPer100K (vaxData: CdcData.VaccinationData array) location =
+let getFullyVaccinatedPercentage (vaxData: CdcData.VaccinationData array) location =
     let locationRow =
         vaxData
         |> Array.where (fun row -> row.Location = location)
         |> Seq.exactlyOne
 
-    match locationRow.AdministeredDose2Per100k with
-    | Some per100k -> Some per100k
-    | None ->
-        match (locationRow.Census2019, locationRow.AdministeredDose2) with
-        | (Some population, Some dose2) -> Some(dose2 / (population / 100000))
-        | (None, _)
-        | (_, None) -> None
+    locationRow.SeriesCompletePopPct

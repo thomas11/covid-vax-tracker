@@ -69,5 +69,5 @@ let ``progress bar shows half completed`` () =
 
 [<Fact>]
 let ``complete Tweet should look as expected`` () =
-    tweetContent 13472 "WA"
-    |> should equal "In WA, 13.5% of the population (13472 per 100k) received both doses of either the Pfizer or the Moderna vaccine.\n▓▓░░░░░░░░░░░░░░░░░░"
+    tweetContent 13.5m "WA"
+    |> should equal "In WA, 13.5% of the population are fully vaccinated (two doses of Pfizer or Moderna or one dose of J&J).\n▓▓░░░░░░░░░░░░░░░░░░"

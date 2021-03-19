@@ -26,7 +26,7 @@ module cdc_vax_function =
         Environment.GetEnvironmentVariable("TwitterTokenSecret")
 
     let generateTweetForLocation cdcData location locationName =
-        getTwoDosesPer100K cdcData location
+        getFullyVaccinatedPercentage cdcData location
         |> Option.map (fun doses -> tweetContent doses locationName)
 
     let tweetAndLog twitterClient (log: ILogger) content location =
