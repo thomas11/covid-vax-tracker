@@ -40,7 +40,7 @@ class MyStack : Stack
             NetworkRuleSet = new AzureNative.Storage.Inputs.NetworkRuleSetArgs
             {
                 Bypass = "AzureServices",
-                DefaultAction = "Allow",
+                DefaultAction = AzureNative.Storage.DefaultAction.Allow,
             },
             ResourceGroupName = "covidvaxtracker2",
             Sku = new AzureNative.Storage.Inputs.SkuArgs
@@ -132,7 +132,7 @@ class MyStack : Stack
                 Sku = new AzureNative.KeyVault.Inputs.SkuArgs
                 {
                     Family = "A",
-                    Name = "Standard",
+                    Name = AzureNative.KeyVault.SkuName.Standard,
                 },
                 SoftDeleteRetentionInDays = 90,
                 TenantId = "51920507-9d80-44df-89ad-f7a897aad167",
@@ -174,7 +174,7 @@ class MyStack : Stack
         {
             ClientAffinityEnabled = false,
             ClientCertEnabled = false,
-            ClientCertMode = "Required",
+            ClientCertMode = AzureNative.Web.ClientCertMode.Required,
             ContainerSize = 1536,
             CustomDomainVerificationId = "D19BDF63406458B49AECDDBEB9110CF4634CA90BA01AEF3D9F00BB79AB522134",
             DailyMemoryTimeQuota = 0,
@@ -183,15 +183,15 @@ class MyStack : Stack
             {
                 new AzureNative.Web.Inputs.HostNameSslStateArgs
                 {
-                    HostType = "Standard",
+                    HostType = AzureNative.Web.HostType.Standard,
                     Name = "covidvaxtracker.azurewebsites.net",
-                    SslState = "Disabled",
+                    SslState = AzureNative.Web.SslState.Disabled,
                 },
                 new AzureNative.Web.Inputs.HostNameSslStateArgs
                 {
-                    HostType = "Repository",
+                    HostType = AzureNative.Web.HostType.Repository,
                     Name = "covidvaxtracker.scm.azurewebsites.net",
-                    SslState = "Disabled",
+                    SslState = AzureNative.Web.SslState.Disabled,
                 },
             },
             HostNamesDisabled = false,
@@ -199,14 +199,14 @@ class MyStack : Stack
             HyperV = false,
             Identity = new AzureNative.Web.Inputs.ManagedServiceIdentityArgs
             {
-                Type = "SystemAssigned",
+                Type = AzureNative.Web.ManagedServiceIdentityType.SystemAssigned,
             },
             IsXenon = false,
             KeyVaultReferenceIdentity = "SystemAssigned",
             Kind = "functionapp",
             Location = "West US 2",
             Name = "covidvaxtracker",
-            RedundancyMode = "None",
+            RedundancyMode = AzureNative.Web.RedundancyMode.None,
             Reserved = false,
             ResourceGroupName = "covidvaxtracker2",
             ScmSiteAlsoStopped = false,
@@ -228,19 +228,17 @@ class MyStack : Stack
         });
         var cvtTimerFunction = new AzureNative.Web.WebAppFunction("cvtTimerFunction", new AzureNative.Web.WebAppFunctionArgs
         {
-            Config = new Dictionary<string, string>
+            Config = new Dictionary<string, object>
             {
-                { "bindings",
-                {
-
+                { "bindings", new Dictionary<string, object>
                     {
                         { "name", "myTimer" },
                         { "runOnStartup", false },
                         { "schedule", "0 0 1 * * *" },
                         { "type", "timerTrigger" },
                         { "useMonitor", true },
-                    },
-                } },
+                    }
+                },
                 { "configurationSource", "attributes" },
                 { "disabled", false },
                 { "entryPoint", "CdcVaxTracker.Function.cdc_vax_function.runTimer" },
