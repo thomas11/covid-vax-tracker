@@ -1,0 +1,34 @@
+{
+    "resources": [
+        {
+            "type": "azure-native:resources:ResourceGroup",
+            "name": "cvtRG",
+            "id": "/subscriptions/ecf88c95-e79e-4ecb-81af-c2c6b6063fea/resourceGroups/covidvaxtracker2"
+        },
+        {
+            "type": "azure-native:storage:StorageAccount",
+            "name": "cvtStorageAccount",
+            "id": "/subscriptions/ecf88c95-e79e-4ecb-81af-c2c6b6063fea/resourceGroups/covidvaxtracker2/providers/Microsoft.Storage/storageAccounts/covidvaxtracker2"
+        },
+        {
+            "type": "azure-native:keyvault:Vault",
+            "name": "cvtKeyVault",
+            "id": "/subscriptions/ecf88c95-e79e-4ecb-81af-c2c6b6063fea/resourceGroups/covidvaxtracker2/providers/Microsoft.KeyVault/vaults/covidvaxtracker-vault"
+        },
+        {
+            "type": "azure-native:web:AppServicePlan",
+            "name": "cvtAppPlan",
+            "id": "/subscriptions/ecf88c95-e79e-4ecb-81af-c2c6b6063fea/resourceGroups/covidvaxtracker2/providers/Microsoft.Web/serverfarms/WestUS2Plan"
+        },
+        {
+            "type": "azure-native:web:WebApp",
+            "name": "cvtFunctionApp",
+            "id": "/subscriptions/ecf88c95-e79e-4ecb-81af-c2c6b6063fea/resourceGroups/covidvaxtracker2/providers/Microsoft.Web/sites/covidvaxtracker"
+        },
+        {
+            "type": "azure-native:web:WebAppFunction",
+            "name": "cvtTimerFunction",
+            "id": "/subscriptions/ecf88c95-e79e-4ecb-81af-c2c6b6063fea/resourceGroups/covidvaxtracker2/providers/Microsoft.Web/sites/covidvaxtracker/functions/TweetCdcDataTimer"
+        }
+    ]
+}

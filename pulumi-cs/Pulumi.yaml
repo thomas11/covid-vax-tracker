@@ -1,0 +1,3 @@
+name: covid_vax_tracker_pulumi_cs
+runtime: dotnet
+description: Pulumi C# scaffolding for the Covid Vax Tracker
